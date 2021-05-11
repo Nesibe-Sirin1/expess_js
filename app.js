@@ -1,12 +1,14 @@
 const express = require('express');
 const app = express();
 
-app.get('/',(req,res)=>{
-    res.send('Hello World');
+app.use((req,res,next)=>{
+    console.log('middleware 1 çalıştırıldı');
+    next();
 });
 
-app.get('/api-product',(req,res)=>{
-    res.send('Ürün listesi');
+app.use((req,res,next)=>{
+    console.log('middleware 2 çalıştırıldı');
+    res.send('<h1>hello from express </h1>');
 });
 
 app.listen(3000,()=>{
